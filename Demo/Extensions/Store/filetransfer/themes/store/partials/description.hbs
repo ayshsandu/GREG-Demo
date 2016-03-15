@@ -1,0 +1,8 @@
+<div class="">
+    {{#eachField this.fields}}
+        {{#if_equal label "Description"}}
+        <div id="{{label}}-value" class="col-sm-4 overview">{{#if value}}{{value}}{{else}}No Description provided{{/if}}</div>
+        {{else}}
+        {{/if_equal}}
+    {{/eachField}}
+</div>

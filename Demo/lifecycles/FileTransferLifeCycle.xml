@@ -1,0 +1,71 @@
+<aspect name="FileTransferLifeCycle" class="org.wso2.carbon.governance.registry.extensions.aspects.DefaultLifeCycle">
+    <configuration type="literal">
+        <lifecycle>
+            <scxml xmlns="http://www.w3.org/2005/07/scxml"
+                   version="1.0"
+                   initialstate="Initial">
+                <state id='Initial'>
+                    <datamodel>
+
+                    </datamodel>
+                    <transition event="Promote" target="Submitted"/>
+                </state>
+                <state id="Submitted">
+                    <datamodel>
+
+                    </datamodel>
+                    <transition event="Promote" target="In-Review"/>
+                </state>
+                <state id="In-Review">
+                    <datamodel>
+                        <data name="checkItems">
+                            <item name="File Verified" forEvent="">
+                            </item>
+                            <item name="Metadata Completed" forEvent="">
+                            </item>
+                            <item name="QoS Created" forEvent="">
+                            </item>
+                            <item name="Protocol Verified" forEvent="">
+                            </item>
+                        </data>
+                        <data name="transitionUI">
+                            <ui forEvent="Promote" href="../lifecycles/pre_invoke_aspect_ajaxprocessor.jsp?currentEnvironment=/_system/governance/trunk/"/>
+                        </data>
+                    </datamodel>
+                    <transition event="Promote" target="Transferred"/>
+                    <transition event="Demote" target="Decommissioned"/>
+                </state>
+                <state id="Transferred">
+                    <datamodel>
+                        <data name="checkItems">
+                            <item name="Verified in Destination" forEvent="">
+                            </item>
+                            <item name="Removed from Source" forEvent="">
+                            </item>
+                        </data>
+                    </datamodel>
+                    <transition event="Demote" target="Depreciated"/>
+                </state>
+                <state id="Decommissioned">
+                    <datamodel>
+                        <data name="checkItems">
+                            <item name="Malicious Transfer Request" forEvent="">
+                            </item>
+                            <item name="Incomplete Transfer Request" forEvent="">
+                            </item>
+                            <item name="Other" forEvent="">
+                            </item>
+                        </data>
+                    </datamodel>
+                    <transition event="Demote" target="Depreciated"/>
+                    <transition event="Promote" target="In-Review"/>
+                </state>
+                <state id="Depreciated">
+                    <datamodel>
+                    </datamodel>
+                    <transition event="Promote" target="In-Review"/>
+                </state>
+            </scxml>
+        </lifecycle>
+    </configuration>
+</aspect>

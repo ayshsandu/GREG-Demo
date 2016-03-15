@@ -1,0 +1,206 @@
+<!--
+ ~ Copyright (c) 2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ ~
+ ~ Licensed under the Apache License, Version 2.0 (the "License");
+ ~ you may not use this file except in compliance with the License.
+ ~ You may obtain a copy of the License at
+ ~
+ ~      http://www.apache.org/licenses/LICENSE-2.0
+ ~
+ ~ Unless required by applicable law or agreed to in writing, software
+ ~ distributed under the License is distributed on an "AS IS" BASIS,
+ ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ ~ See the License for the specific language governing permissions and
+ ~ limitations under the License.
+-->
+
+<artifactType type="application/vnd.wso2-file-transfer+xml" shortName="filetransfer" singularLabel="File Transfer" pluralLabel="File Transfers"
+              hasNamespace="false" iconSet="27">
+    <storagePath>/trunk/filetransfer/@{overview_version}/@{overview_name}</storagePath>
+    <nameAttribute>overview_name</nameAttribute>
+    <namespaceAttribute>overview_version</namespaceAttribute>
+    <lifecycle>FileTransferLifeCycle</lifecycle>
+    <ui>
+        <list>
+            <column name="Name">
+                <data type="text" value="overview_name"/>
+            </column>
+            <column name="Version">
+                <data type="path" value="overview_version" href="@{storagePath}"/>
+            </column>
+            <column name="ID">
+                <data type="text" value="overview_id"/>
+            </column>
+        </list>
+    </ui>
+    <content>
+        <table name="Overview">
+            <field type="text" required="true" readonly="true">
+                <name label="Name">Name</name>
+            </field>
+            <field type="text" required="true" readonly="true">
+                <name label="ID">ID</name>
+            </field>
+            <field type="text" required="true" readonly="true">
+                <name label="Version">Version</name>
+            </field>
+            <field type="text" readonly="true">
+                <name label="ServiceNow ID">serviceNowID</name>
+            </field>
+            <field type="text">
+                <name label="Client Name">clientName</name>
+            </field>
+            <field type="checkbox">
+                <name label="External Client">externalClient</name>
+            </field>
+            <field type="text-area">
+                <name label="Description">description</name>
+            </field>
+        </table>
+        <table name="File Details" columns="9"  maxoccurs="unbounded">
+            <subheading>
+                <heading>Environment</heading>
+                <heading>Seq_#</heading>
+                <heading>File Name</heading>
+                <heading>Direction</heading>
+                <heading>Trigger/Jobname</heading>
+                <heading>Server/System</heading>
+                <heading>Disposition</heading>
+                <heading>Encryption</heading>
+                <heading>File Reference</heading>
+            </subheading>
+            <field type="options">
+                <name label="Environment">environment</name>
+                <values>
+                    <value>None</value>
+                    <value>Default</value>
+                    <value>Dev</value>
+                    <value>Test</value>
+                    <value>Stag</value>
+                    <value>Prod</value>
+                </values>
+            </field>
+            <field type="text">
+                <name label="Seq_#">seqNo</name>
+            </field>
+            <field type="text">
+                <name label="File Name">fileName</name>
+            </field>
+            <field type="options">
+                <name label="Direction">direction</name>
+                <values>
+                    <value>None</value>
+                    <value>Source</value>
+                    <value>Destination</value>
+                </values>
+            </field>
+            <field type="text">
+                <name label="Trigger/Jobname">triggerJobname</name>
+            </field>
+            <field type="text">
+                <name label="Server/System">serverSystem</name>
+            </field>
+            <field type="options">
+                <name label="Disposition">disposition</name>
+                <values>
+                    <value>None</value>
+                    <value>Temporary</value>
+                    <value>Permanent</value>
+                </values>
+            </field>
+            <field type="options">
+                <name label="Encryption">encryption</name>
+                <values>
+                    <value>None</value>
+                    <value>Symmetric</value>
+                    <value>Asymmetric</value>
+                    <value>Hashing</value>
+                </values>
+            </field>
+            <field type="text">
+                <name label="File Reference">fileReference</name>
+            </field>
+        </table>
+        <table name="Contacts" columns="4"  maxoccurs="unbounded">
+            <subheading>
+                <heading>Contact/Organization Name</heading>
+                <heading>Email</heading>
+                <heading>Phone</heading>
+                <heading>Contact Type</heading>
+            </subheading>
+            <field type="text">
+                <name label="Contact/Organization Name">name</name>
+            </field>
+            <field type="text">
+                <name label="Email">email</name>
+            </field>
+            <field type="text">
+                <name label="Phone">phone</name>
+            </field>
+            <field type="options">
+                <name label="Contact Type">Contact Type</name>
+                <values>
+                    <value>None</value>
+                    <value>Technical Owner</value>
+                    <value>Business Owner</value>
+                </values>
+            </field>
+        </table>
+        <table name="Transmission Information">
+            <field type="options">
+                <name label="Data Direction">dataDirection</name>
+                <values>
+                    <value>None</value>
+                    <value>Inbound</value>
+                    <value>Outbound</value>
+                </values>
+            </field>
+            <field type="text">
+                <name label="Character Format">characterFormat</name>
+            </field>
+            <field type="checkbox">
+                <name label="Third Party Transmitter">thirdPartyTransmitter</name>
+            </field>
+        </table>
+        <table name="Transmission Entries" columns="5"  maxoccurs="unbounded">
+            <subheading>
+                <heading>Environment</heading>
+                <heading>Hostname</heading>
+                <heading>Client_Server_IP</heading>
+                <heading>Directory</heading>
+                <heading>File Protocol</heading>
+            </subheading>
+            <field type="options">
+                <name label="Endpoint">Endpoint</name>
+                <values>
+                    <value>None</value>
+                    <value>Default</value>
+                    <value>Dev</value>
+                    <value>Test</value>
+                    <value>Stag</value>
+                    <value>Prod</value>
+                </values>
+            </field>
+            <field type="text">
+                <name label="Hostname">hostName</name>
+            </field>
+            <field type="text">
+                <name label="Client_Server_IP">clientServerIP</name>
+            </field>
+            <field type="text">
+                <name label="Directory">directory</name>
+            </field>
+            <field type="options">
+                <name label="File Protocol">fileProtocol</name>
+                <values>
+                    <value>None</value>
+                    <value>FTP</value>
+                    <value>SFTP</value>
+                    <value>VPN</value>
+                    <value>HTTP</value>
+                </values>
+            </field>
+        </table>
+    </content>
+</artifactType>
+

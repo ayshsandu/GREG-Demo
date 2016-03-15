@@ -1,0 +1,3 @@
+.form-control, .custom-form-right select, .custom-form-right textarea, .cu-data-table td select, .cu-data-table td textarea, .cu-data-table input[type="text"], input[type="text"].input-large {
+    width:auto;
+}

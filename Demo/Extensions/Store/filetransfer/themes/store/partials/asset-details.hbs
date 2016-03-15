@@ -1,0 +1,27 @@
+{{#each tables}}
+{{#if_equal name "overview"}}
+<div class="">
+    {{#eachField this.fields}}
+        {{#if_equal value null}}
+        {{else}}
+            {{#if_equal label "Description"}}
+            {{else}}
+                <div class="row padding-bottom-sm">
+                    <div class="col-sm-7 text-left"><b>{{label}} {{t ":"}}</b></div>
+
+                    {{#if this.url}}
+                        <div id="{{label}}-value" class="col-sm-7"><a href="{{value}}">{{value}}</a></div>
+                    {{else}}
+                                {{#if_equal this.type "checkbox"}}
+                                    {{renderCheckbox value}}
+                                {{else}}
+                                    <div id="{{label}}-value" class="col-sm-4 overview-content">{{value}}</div>
+                                {{/if_equal}}
+                    {{/if}}
+                </div>
+            {{/if_equal}}
+        {{/if_equal}}
+    {{/eachField}}
+</div>
+{{/if_equal}}
+{{/each}}
